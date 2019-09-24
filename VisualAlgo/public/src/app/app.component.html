@@ -8,8 +8,11 @@
 </head>
 <body>
   <h1 style="display: inline-block">hi</h1>
-  <a [routerLink] = "['/bubble']" style="display: inline-block">Bubble</a>
-  <a [routerLink] = "['/pancake']" style="display: inline-block">Pancake</a>
+
+  <select (change)="changeAlgo($event)">
+    <option [routerLink]="['/bubble']">Bubble</option>
+    <option [routerLink]="['/pancake']">Pancake</option>
+  </select>
   <router-outlet></router-outlet>
 </body>
 </html>

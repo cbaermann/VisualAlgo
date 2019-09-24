@@ -1,3 +1,6 @@
+
+
+
 let values = [];
 
 let w = 100;
@@ -16,28 +19,28 @@ function setup() {
 function draw() {
     background(255);
     
-    //BUBBLE
-    if(window.location.pathname === "/bubble") {
-        arr = bubbleSort(arr);
-        if(arr[0] > values.length - 1) {
-            sorted = true;
-            noLoop();
-        }
+    // //BUBBLE
+    // if(window.location.pathname === "/bubble") {
+    //     arr = bubbleSort(arr);
+    //     if(arr[0] > values.length - 1) {
+    //         sorted = true;
+    //         noLoop();
+    //     }
 
-        for(let i = 0; i < values.length; i++) {
-            stroke(200);
-            if(arr[0] < values.length - i) {
-                fill(51);
-            }
-            else {
-                fill(0, 128, 0);
-            }
-            if(arr[1] == i && arr[0] < values.length - i) {
-                fill(128, 0, 0);
-            }
-            rect(i * w, height - values[i], w, values[i]);
-        }
-    }
+    //     for(let i = 0; i < values.length; i++) {
+    //         stroke(200);
+    //         if(arr[0] < values.length - i) {
+    //             fill(51);
+    //         }
+    //         else {
+    //             fill(0, 128, 0);
+    //         }
+    //         if(arr[1] == i && arr[0] < values.length - i) {
+    //             fill(128, 0, 0);
+    //         }
+    //         rect(i * w, height - values[i], w, values[i]);
+    //     }
+    // }
     
 
     //SELECTION
