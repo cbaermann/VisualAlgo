@@ -15,6 +15,7 @@ export class BogoComponent implements OnInit {
   finished = false;
   shuffling = 0;
   shuffle = false;
+  go = false;
 
   constructor() { }
 
@@ -36,10 +37,13 @@ export class BogoComponent implements OnInit {
 
       s.draw = () => {
         s.background(255);
-        if(this.sorted == false) {
-          this.finished = this.bogoSort();
-          if(this.finished == true) {
-            this.sorted = true;
+        if(this.go ==true){
+
+          if(this.sorted == false) {
+            this.finished = this.bogoSort();
+            if(this.finished == true) {
+              this.sorted = true;
+            }
           }
         }
         if(this.shuffle == true) {
@@ -67,6 +71,10 @@ export class BogoComponent implements OnInit {
     }
 
     let canvas = new p5(sketch);
+  }
+
+  ngOnDestroy(){
+    document.querySelector("canvas").remove()
   }
 
   bogoSort() {
@@ -98,6 +106,10 @@ export class BogoComponent implements OnInit {
 
   onShuffle() {
     this.shuffle = true;
+  }
+  
+  onClick(){
+    this.go = true;
   }
 
 }

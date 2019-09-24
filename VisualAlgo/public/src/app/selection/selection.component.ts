@@ -15,6 +15,7 @@ export class SelectionComponent implements OnInit {
   arr = [0, 0, 0, 0];
   shuffling = 0;
   shuffle = false;
+  go = false;
 
   constructor() { }
 
@@ -36,10 +37,13 @@ export class SelectionComponent implements OnInit {
 
       s.draw = () => {
         s.background(255);
-        if(this.sorted == false) {
-          this.arr = this.selectionSort(this.arr);
-          if(this.arr[0] > this.values.length - 1) {
-            this.sorted = true;
+        if(this.go==true){
+
+          if(this.sorted == false) {
+            this.arr = this.selectionSort(this.arr);
+            if(this.arr[0] > this.values.length - 1) {
+              this.sorted = true;
+            }
           }
         }
         if(this.shuffle == true) {
@@ -49,6 +53,7 @@ export class SelectionComponent implements OnInit {
             this.shuffling = this.values.length - 1;
             this.sorted = false;
             this.shuffle = false;
+            this.go = false;
           }
         }
 
@@ -69,6 +74,10 @@ export class SelectionComponent implements OnInit {
     }
 
     let canvas = new p5(sketch);
+  }
+
+    ngOnDestroy(){
+    document.querySelector("canvas").remove()
   }
 
   swap(arr, a, b) {
@@ -110,5 +119,9 @@ export class SelectionComponent implements OnInit {
 
   onShuffle() {
     this.shuffle = true;
+  }
+
+  onClick(){
+    this.go = true;
   }
 }

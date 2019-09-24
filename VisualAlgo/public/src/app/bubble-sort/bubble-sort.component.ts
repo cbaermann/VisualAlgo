@@ -15,6 +15,7 @@ export class BubbleSortComponent implements OnInit {
   arr = [0, 0, 0, 0];
   shuffling = 0;
   shuffle = false;
+  go = false;
   
   constructor() {}
 
@@ -22,24 +23,26 @@ export class BubbleSortComponent implements OnInit {
     this.onShuffle();
     const sketch = (s) => {
       s.preload = () => {
-
       }
 
       s.setup = () => {
         s.createCanvas(window.innerWidth - 20, window.innerHeight - 120);
         this.values = new Array(s.floor(s.width / this.w));
         for(let i = 0; i < this.values.length; i++) {
-          this.values[i] = s.random(s.height);
+          this.values[i] = s.random(s.height-50);
         }
         this.shuffling = this.values.length - 1;
       }
 
       s.draw = () => {
         s.background(255);
-        if(this.sorted == false) {
-          this.arr = this.bubbleSort(this.arr);
-          if(this.arr[0] > this.values.length - 1) {
+        if(this.go==true){
+
+          if(this.sorted == false) {
+            this.arr = this.bubbleSort(this.arr);
+            if(this.arr[0] > this.values.length - 1) {
               this.sorted = true;
+            }
           }
         }
         if(this.shuffle == true) {
@@ -49,6 +52,7 @@ export class BubbleSortComponent implements OnInit {
             this.shuffling = this.values.length - 1;
             this.sorted = false;
             this.shuffle = false;
+            this.go = false;
           }
         }
 
@@ -70,6 +74,12 @@ export class BubbleSortComponent implements OnInit {
 
     let canvas = new p5(sketch)
   }
+
+  ngOnDestroy(){
+    document.querySelector("canvas").remove()
+  }
+
+
 
   swap(arr, a, b) {
     let temp = arr[a];
@@ -108,5 +118,9 @@ export class BubbleSortComponent implements OnInit {
 
   onShuffle() {
     this.shuffle = true;
+  }
+
+  onClick(){
+    this.go = true;
   }
 }
