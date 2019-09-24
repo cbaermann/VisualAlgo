@@ -61,6 +61,10 @@ export class BubbleSortComponent implements OnInit {
     let canvas = new p5(sketch)
   }
 
+  ngOnDestroy(){
+    document.querySelector("canvas").remove()
+  }
+
 
 
   swap(arr, a, b) {

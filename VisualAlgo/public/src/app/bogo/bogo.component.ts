@@ -13,6 +13,7 @@ export class BogoComponent implements OnInit {
   w = 300;
   sorted = false;
   finished : Boolean;
+  go = false;
 
   constructor() { }
 
@@ -32,10 +33,13 @@ export class BogoComponent implements OnInit {
 
       s.draw = () => {
         s.background(255);
-        if(this.sorted == false) {
-          this.finished = this.bogoSort();
-          if(this.finished == true) {
-            this.sorted = true;
+        if(this.go ==true){
+
+          if(this.sorted == false) {
+            this.finished = this.bogoSort();
+            if(this.finished == true) {
+              this.sorted = true;
+            }
           }
         }
 
@@ -56,6 +60,10 @@ export class BogoComponent implements OnInit {
     let canvas = new p5(sketch);
   }
 
+  ngOnDestroy(){
+    document.querySelector("canvas").remove()
+  }
+
   bogoSort() {
     let finished = true;
     let a = this.values.length - 1;
@@ -73,5 +81,9 @@ export class BogoComponent implements OnInit {
     }
     return finished;
   };
+
+  onClick(){
+    this.go = true;
+  }
 
 }

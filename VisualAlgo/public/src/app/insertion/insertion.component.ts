@@ -13,6 +13,7 @@ export class InsertionComponent implements OnInit {
   w = 1;
   sorted = false;
   insertionArr = [1, 0];
+  go = false;
 
   constructor() { }
 
@@ -32,10 +33,13 @@ export class InsertionComponent implements OnInit {
 
       s.draw = () => {
         s.background(255);
-        if(this.sorted == false) {
-          this.insertionArr = this.insertionSort(this.insertionArr);
-          if(this.insertionArr[0] > this.values.length - 1) {
-            this.sorted = true;
+        if(this.go==true){
+
+          if(this.sorted == false) {
+            this.insertionArr = this.insertionSort(this.insertionArr);
+            if(this.insertionArr[0] > this.values.length - 1) {
+              this.sorted = true;
+            }
           }
         }
 
@@ -69,6 +73,10 @@ export class InsertionComponent implements OnInit {
     let canvas = new p5(sketch);
   }
 
+  ngOnDestroy(){
+    document.querySelector("canvas").remove()
+  }
+
   swap(arr, a, b) {
     let temp = arr[a];
     arr[a] = arr[b];
@@ -86,5 +94,8 @@ export class InsertionComponent implements OnInit {
     arr[0] += 1;
     return arr;
   };
+  onClick(){
+    this.go = true;
+  }
 
 }

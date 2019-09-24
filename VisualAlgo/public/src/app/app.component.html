@@ -11,8 +11,13 @@
   <br>
 
   <select (change)="changeAlgo($event)">
+    <option>Select Sort</option>
     <option [routerLink]="['/bubble']">Bubble</option>
     <option [routerLink]="['/pancake']">Pancake</option>
+    <option [routerLink]="['/bogo']">Bogo</option>
+    <option [routerLink]="['/insertion']">Insertion</option>
+    <option [routerLink]="['/selection']">Selection</option>
+    <option [routerLink]="['/cocktail']">Cocktail</option>
   </select>
   <router-outlet></router-outlet>
 </body>

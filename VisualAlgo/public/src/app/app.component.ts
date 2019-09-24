@@ -15,8 +15,8 @@ export class AppComponent {
   changeAlgo($event){
     console.log($event.target.value)
     console.log($event.target.value.toLowerCase())
-    // this._router.navigate(['/'+ $event.target.value.toLowerCase()])
-    this._router.navigate(['/pancake'])
+    this._router.navigate(['/'+ $event.target.value.toLowerCase()])
+    // this._router.navigate(['/pancake'])
   }
 }
 

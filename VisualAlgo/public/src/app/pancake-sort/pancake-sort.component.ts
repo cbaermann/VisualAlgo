@@ -13,6 +13,7 @@ export class PancakeSortComponent implements OnInit {
   w = 100;
   sorted = false;
   arr = [0, 0, 0, 0];
+  go = false;
 
   constructor() { }
 
@@ -32,10 +33,13 @@ export class PancakeSortComponent implements OnInit {
 
       s.draw = () => {
         s.background(255);
-        if(this.sorted == false) {
-          this.arr = this.pancakeSort(this.arr);
-          if(this.arr[0] > this.values.length - 1) {
-            this.sorted = true;
+        if(this.go==true){
+
+          if(this.sorted == false) {
+            this.arr = this.pancakeSort(this.arr);
+            if(this.arr[0] > this.values.length - 1) {
+              this.sorted = true;
+            }
           }
         }
 
@@ -58,6 +62,11 @@ export class PancakeSortComponent implements OnInit {
 
     let canvas = new p5(sketch);
   }
+
+  ngOnDestroy(){
+    document.querySelector("canvas").remove()
+  }
+
 
   pancakeSort(arr) {
     let i = arr[0];
@@ -96,5 +105,9 @@ export class PancakeSortComponent implements OnInit {
         arr[i] = arr[b - i];
         arr[b - i] = temp;
     }
+  }
+
+  onClick(){
+    this.go = true;
   }
 }

@@ -13,6 +13,7 @@ export class CocktailComponent implements OnInit {
   w = 100;
   sorted = false;
   arr = [0, 0, 0, 0];
+  go = false;
 
   constructor() { }
 
@@ -32,10 +33,13 @@ export class CocktailComponent implements OnInit {
 
       s.draw = () => {
         s.background(255);
-        if(this.sorted == false) {
-          this.arr = this.cocktailSort(this.arr);
-          if(this.arr[0] > this.values.length / 2) {
-            this.sorted = true;
+        if(this.go==true){
+
+          if(this.sorted == false) {
+            this.arr = this.cocktailSort(this.arr);
+            if(this.arr[0] > this.values.length / 2) {
+              this.sorted = true;
+            }
           }
         }
 
@@ -56,6 +60,10 @@ export class CocktailComponent implements OnInit {
     }
 
     let canvas = new p5(sketch);
+  }
+
+  ngOnDestroy(){
+    document.querySelector("canvas").remove()
   }
 
   swap(arr, a, b) {
@@ -103,5 +111,8 @@ export class CocktailComponent implements OnInit {
     arr[3] = color;
     return arr;
 };
+onClick(){
+  this.go = true;
+}
 
 }
