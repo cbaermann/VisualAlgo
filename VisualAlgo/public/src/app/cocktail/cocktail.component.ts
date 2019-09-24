@@ -13,11 +13,14 @@ export class CocktailComponent implements OnInit {
   w = 100;
   sorted = false;
   arr = [0, 0, 0, 0];
+  shuffling = 0;
+  shuffle = false;
   go = false;
 
   constructor() { }
 
   ngOnInit() {
+    this.onShuffle();
     const sketch = (s) => {
       s.preload = () => {
 
@@ -29,6 +32,7 @@ export class CocktailComponent implements OnInit {
         for(let i = 0; i < this.values.length; i++) {
           this.values[i] = s.random(s.height - 50);
         }
+        this.shuffling = this.values.length - 1;
       }
 
       s.draw = () => {
@@ -42,6 +46,16 @@ export class CocktailComponent implements OnInit {
             }
           }
         }
+        if(this.shuffle == true) {
+          this.arr = [0, 0, 0, 0];
+          this.shuffling = this.shuf(this.shuffling);
+          this.sorted = false;
+          if(this.shuffling == 0) {
+            this.shuffling = this.values.length - 1;
+            this.shuffle = false;
+            this.go = false;
+          }
+        }
 
         for(let i = 0; i < this.values.length; i++) {
           s.stroke(200);
@@ -49,6 +63,9 @@ export class CocktailComponent implements OnInit {
             s.fill(51);
           }
           else {
+            s.fill(0, 128, 0);
+          }
+          if(this.sorted == true) {
             s.fill(0, 128, 0);
           }
           if(this.arr[1] == i && this.arr[0] < this.values.length - i) {
@@ -110,9 +127,23 @@ export class CocktailComponent implements OnInit {
     arr[2] = dir;
     arr[3] = color;
     return arr;
-};
-onClick(){
-  this.go = true;
-}
+  };
+
+  shuf(val) {
+    let j = Math.floor(Math.random() * val + 1);
+    let tempVal = this.values[j];
+    this.values[j] = this.values[val];
+    this.values[val] = tempVal;
+    val -= 1;
+    return val;
+  }
+
+  onShuffle() {
+    this.shuffle = true;
+  }
+
+  onClick(){
+    this.go = true;
+  }
 
 }

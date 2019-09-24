@@ -12,12 +12,15 @@ export class BogoComponent implements OnInit {
 
   w = 300;
   sorted = false;
-  finished : Boolean;
+  finished = false;
+  shuffling = 0;
+  shuffle = false;
   go = false;
 
   constructor() { }
 
   ngOnInit() {
+    this.onShuffle();
     const sketch = (s) => {
       s.preload = () => {
 
@@ -29,6 +32,7 @@ export class BogoComponent implements OnInit {
         for(let i = 0; i < this.values.length; i++) {
           this.values[i] = s.random(s.height - 50);
         }
+        this.shuffling = this.values.length - 1;
       }
 
       s.draw = () => {
@@ -40,6 +44,15 @@ export class BogoComponent implements OnInit {
             if(this.finished == true) {
               this.sorted = true;
             }
+          }
+        }
+        if(this.shuffle == true) {
+          this.shuffling = this.shuf(this.shuffling);
+          if(this.shuffling == 0) {
+            this.finished = false;
+            this.shuffling = this.values.length - 1;
+            this.sorted = false;
+            this.shuffle = false;
           }
         }
 
@@ -82,6 +95,19 @@ export class BogoComponent implements OnInit {
     return finished;
   };
 
+  shuf(val) {
+    let j = Math.floor(Math.random() * val + 1);
+    let tempVal = this.values[j];
+    this.values[j] = this.values[val];
+    this.values[val] = tempVal;
+    val -= 1;
+    return val;
+  }
+
+  onShuffle() {
+    this.shuffle = true;
+  }
+  
   onClick(){
     this.go = true;
   }
