@@ -12,11 +12,14 @@ export class BubbleSortComponent implements OnInit {
 
   w = 100;
   sorted = false;
-  arr = [0, 0];
+  arr = [0, 0, 0, 0];
+  shuffling = 0;
+  shuffle = false;
   
   constructor() {}
 
   ngOnInit() {
+    this.onShuffle();
     const sketch = (s) => {
       s.preload = () => {
 
@@ -28,6 +31,7 @@ export class BubbleSortComponent implements OnInit {
         for(let i = 0; i < this.values.length; i++) {
           this.values[i] = s.random(s.height);
         }
+        this.shuffling = this.values.length - 1;
       }
 
       s.draw = () => {
@@ -36,6 +40,15 @@ export class BubbleSortComponent implements OnInit {
           this.arr = this.bubbleSort(this.arr);
           if(this.arr[0] > this.values.length - 1) {
               this.sorted = true;
+          }
+        }
+        if(this.shuffle == true) {
+          this.arr = [0, 0, 0, 0];
+          this.shuffling = this.shuf(this.shuffling);
+          if(this.shuffling == 0) {
+            this.shuffling = this.values.length - 1;
+            this.sorted = false;
+            this.shuffle = false;
           }
         }
 
@@ -83,4 +96,17 @@ export class BubbleSortComponent implements OnInit {
     arr[1] = j;
     return arr;
   };
+
+  shuf(val) {
+    let j = Math.floor(Math.random() * val + 1);
+    let tempVal = this.values[j];
+    this.values[j] = this.values[val];
+    this.values[val] = tempVal;
+    val -= 1;
+    return val;
+  }
+
+  onShuffle() {
+    this.shuffle = true;
+  }
 }
