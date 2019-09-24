@@ -18,12 +18,13 @@ function draw() {
     
     //BUBBLE
     if(window.location.pathname === "/bubble") {
-        arr = bubbleSort(arr);
-        if(arr[0] > values.length - 1) {
-            sorted = true;
-            noLoop();
+        if(sorted == false) {
+            arr = bubbleSort(arr);
+            if(arr[0] > values.length - 1) {
+                sorted = true;
+            }
         }
-
+        
         for(let i = 0; i < values.length; i++) {
             stroke(200);
             if(arr[0] < values.length - i) {
@@ -42,9 +43,11 @@ function draw() {
 
     //SELECTION
     if(window.location.pathname === "/selection") {
-        arr = selectionSort(arr);
-        if(arr[0] > values.length - 1) {
-            noLoop();
+        if(sorted == false) {
+            arr = selectionSort(arr);
+            if(arr[0] > values.length - 1) {
+                sorted = true;
+            }
         }
 
         for(let i = 0; i < values.length; i++) {
@@ -64,9 +67,11 @@ function draw() {
 
     //COCKTAIL
     if(window.location.pathname === "/cocktail") {
-        arr = cocktailSort(arr);
-        if(arr[0] > values.length / 2) {
-            noLoop();
+        if(sorted == false) {
+            arr = cocktailSort(arr);
+            if(arr[0] > values.length / 2) {
+                sorted = true;
+            }
         }
 
         for(let i = 0; i < values.length; i++) {
@@ -86,9 +91,11 @@ function draw() {
 
     //INSERTION
     if(window.location.pathname === "/insertion") {
-        insertionArr = insertionSort(insertionArr);
-        if(insertionArr[0] > values.length - 1) {
-            noLoop();
+        if(sorted == false) {
+            insertionArr = insertionSort(insertionArr);
+            if(insertionArr[0] > values.length - 1) {
+                sorted = true;
+            }
         }
 
         for(let i = 0; i < values.length; i++) {
@@ -108,10 +115,11 @@ function draw() {
 
     //PANCAKE
     if(window.location.pathname === "/pancake") {
-        arr = pancakeSort(arr);
-        if(arr[0] > values.length - 1) {
-            sorted = true;
-            noLoop();
+        if(sorted == false) {
+            arr = pancakeSort(arr);
+            if(arr[0] > values.length - 1) {
+                sorted = true;
+            }
         }
 
         for(let i = 0; i < values.length; i++) {
@@ -131,14 +139,16 @@ function draw() {
 
     //BOGO
     if(window.location.pathname === "/bogo") {
-        let sorted = bogoSort();
-        if(sorted == true) {
-            noLoop();
+        if(sorted == false) {
+            let finished = bogoSort();
+            if(finished == true) {
+                sorted = true;
+            }
         }
 
         for(let i = 0; i < values.length; i++) {
             stroke(200);
-            if(sorted == false) {
+            if(finished == false) {
                 fill(51);
             }
             else {
@@ -149,6 +159,15 @@ function draw() {
     }
 
 
+}
+
+function shuf(val) {
+    let j = Math.floor(Math.random() * val + 1);
+    let tempVal = values[j];
+    values[j] = values[val];
+    values[val] = tempVal;
+    val -= 1;
+    return val;
 }
 
 function swap(arr, a, b) {
@@ -291,7 +310,7 @@ function insertionSort(arr) {
 };
 
 function bogoSort() {
-    let sorted = true;
+    let finished = true;
     let a = values.length - 1;
     while(a >= 0) {
         let b = Math.floor(Math.random() * a + 1);
@@ -302,8 +321,8 @@ function bogoSort() {
     }
     for(let i = 0; i < values.length; i++) {
         if(values[i] > values[i + 1]) {
-            sorted = false;
+            finished = false;
         }
     }
-    return sorted;
+    return finished;
 };

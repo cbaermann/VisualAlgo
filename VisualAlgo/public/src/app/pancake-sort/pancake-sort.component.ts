@@ -12,4 +12,7 @@ export class PancakeSortComponent implements OnInit {
   ngOnInit() {
   }
 
+  Go() {
+    
+  }
 }
