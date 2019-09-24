@@ -13,29 +13,32 @@ export class BubbleSortComponent implements OnInit {
   w = 100;
   sorted = false;
   arr = [0, 0];
+  go = false;
   
   constructor() {}
 
   ngOnInit() {
     const sketch = (s) => {
       s.preload = () => {
-
       }
 
       s.setup = () => {
         s.createCanvas(window.innerWidth - 20, window.innerHeight - 120);
         this.values = new Array(s.floor(s.width / this.w));
         for(let i = 0; i < this.values.length; i++) {
-          this.values[i] = s.random(s.height);
+          this.values[i] = s.random(s.height-50);
         }
       }
 
       s.draw = () => {
         s.background(255);
-        if(this.sorted == false) {
-          this.arr = this.bubbleSort(this.arr);
-          if(this.arr[0] > this.values.length - 1) {
+        if(this.go==true){
+
+          if(this.sorted == false) {
+            this.arr = this.bubbleSort(this.arr);
+            if(this.arr[0] > this.values.length - 1) {
               this.sorted = true;
+            }
           }
         }
 
@@ -57,6 +60,8 @@ export class BubbleSortComponent implements OnInit {
 
     let canvas = new p5(sketch)
   }
+
+
 
   swap(arr, a, b) {
     let temp = arr[a];
@@ -83,4 +88,8 @@ export class BubbleSortComponent implements OnInit {
     arr[1] = j;
     return arr;
   };
+
+  onClick(){
+    this.go = true;
+  }
 }
