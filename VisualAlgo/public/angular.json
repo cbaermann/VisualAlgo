@@ -27,8 +27,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/p5/lib/p5.min.js",
-              "src/assets/js/algos.js"
+              "node_modules/p5/lib/p5.min.js"
             ]
           },
           "configurations": {

@@ -19,3 +19,4 @@ export class AppComponent {
     this._router.navigate(['/pancake'])
   }
 }
+
