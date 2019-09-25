@@ -13,7 +13,7 @@ export class BogoComponent implements OnInit {
   w = 300;
   sorted = false;
   finished = false;
-  shuffling = 0;
+  shuffling = -1;
   shuffle = false;
   go = false;
 
@@ -48,11 +48,12 @@ export class BogoComponent implements OnInit {
         }
         if(this.shuffle == true) {
           this.shuffling = this.shuf(this.shuffling);
-          if(this.shuffling == 0) {
+          if(this.shuffling == -1) {
             this.finished = false;
             this.shuffling = this.values.length - 1;
             this.sorted = false;
             this.shuffle = false;
+            this.go = false;
           }
         }
 

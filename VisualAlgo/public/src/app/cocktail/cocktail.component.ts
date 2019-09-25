@@ -13,7 +13,7 @@ export class CocktailComponent implements OnInit {
   w = 100;
   sorted = false;
   arr = [0, 0, 0, 0];
-  shuffling = 0;
+  shuffling = -1;
   shuffle = false;
   go = false;
 
@@ -50,7 +50,7 @@ export class CocktailComponent implements OnInit {
           this.arr = [0, 0, 0, 0];
           this.shuffling = this.shuf(this.shuffling);
           this.sorted = false;
-          if(this.shuffling == 0) {
+          if(this.shuffling == -1) {
             this.shuffling = this.values.length - 1;
             this.shuffle = false;
             this.go = false;
@@ -63,9 +63,6 @@ export class CocktailComponent implements OnInit {
             s.fill(51);
           }
           else {
-            s.fill(0, 128, 0);
-          }
-          if(this.sorted == true) {
             s.fill(0, 128, 0);
           }
           if(this.arr[1] == i && this.arr[0] < this.values.length - i) {

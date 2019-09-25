@@ -13,7 +13,7 @@ export class BubbleSortComponent implements OnInit {
   w = 100;
   sorted = false;
   arr = [0, 0, 0, 0];
-  shuffling = 0;
+  shuffling = -1;
   shuffle = false;
   go = false;
   
@@ -48,7 +48,7 @@ export class BubbleSortComponent implements OnInit {
         if(this.shuffle == true) {
           this.arr = [0, 0, 0, 0];
           this.shuffling = this.shuf(this.shuffling);
-          if(this.shuffling == 0) {
+          if(this.shuffling == -1) {
             this.shuffling = this.values.length - 1;
             this.sorted = false;
             this.shuffle = false;
