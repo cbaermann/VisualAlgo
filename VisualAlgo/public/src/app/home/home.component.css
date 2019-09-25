@@ -24,4 +24,11 @@ p{
 .VisualAlgo{
     height: 350px;
     width: 350px;
+    
 }
+
+.VisualAlgo:hover{
+    height: 375px;
+    width: 375px;
+}
+

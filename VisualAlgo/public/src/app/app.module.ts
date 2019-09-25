@@ -10,6 +10,7 @@ import { CocktailComponent } from './cocktail/cocktail.component';
 import { InsertionComponent } from './insertion/insertion.component';
 import { BogoComponent } from './bogo/bogo.component';
 import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './home/home.component';
     CocktailComponent,
     InsertionComponent,
     BogoComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
