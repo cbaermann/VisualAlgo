@@ -53,6 +53,7 @@ export class BogoComponent implements OnInit {
             this.shuffling = this.values.length - 1;
             this.sorted = false;
             this.shuffle = false;
+            this.go = false;
           }
         }
 

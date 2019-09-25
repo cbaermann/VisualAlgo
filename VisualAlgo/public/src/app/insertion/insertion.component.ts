@@ -58,19 +58,9 @@ export class InsertionComponent implements OnInit {
         }
 
         for(let i = 0; i < this.values.length; i++) {
-          if(this.w > 1) {
+          
             s.stroke(200);
-          }
-          if(this.w == 1 && this.insertionArr[0] < i) {
-            s.stroke(51);
-          }
-          else {
-            s.stroke(0, 128, 0);
-          }
-          if(this.w == 1 && i == this.insertionArr[1] && this.insertionArr[0] < this.values.length - 1) {
-            s.stroke(128, 0, 0);
-          }
-          if(this.insertionArr[0] < i) {
+          if(this.insertionArr[0] <= i) {
             s.fill(51);
           }
           else {

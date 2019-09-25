@@ -9,6 +9,7 @@ import { SelectionComponent } from './selection/selection.component';
 import { CocktailComponent } from './cocktail/cocktail.component';
 import { InsertionComponent } from './insertion/insertion.component';
 import { BogoComponent } from './bogo/bogo.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BogoComponent } from './bogo/bogo.component';
     SelectionComponent,
     CocktailComponent,
     InsertionComponent,
-    BogoComponent
+    BogoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
