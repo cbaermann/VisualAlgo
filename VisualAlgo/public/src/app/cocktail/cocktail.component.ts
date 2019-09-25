@@ -65,7 +65,6 @@ export class CocktailComponent implements OnInit {
           else {
             s.fill(0, 128, 0);
           }
-
           if(this.arr[1] == i && this.arr[0] < this.values.length - i) {
             s.fill(128, 0, 0);
           }

@@ -13,7 +13,7 @@ export class InsertionComponent implements OnInit {
   w = 10;
   sorted = false;
   insertionArr = [1, 0];
-  shuffling = 0;
+  shuffling = -1;
   shuffle = false;
   go = false;
 
@@ -49,7 +49,7 @@ export class InsertionComponent implements OnInit {
         if(this.shuffle == true) {
           this.insertionArr = [1, 0];
           this.shuffling = this.shuf(this.shuffling);
-          if(this.shuffling == 0) {
+          if(this.shuffling == -1) {
             this.shuffling = this.values.length - 1;
             this.sorted = false;
             this.shuffle = false;
@@ -58,8 +58,7 @@ export class InsertionComponent implements OnInit {
         }
 
         for(let i = 0; i < this.values.length; i++) {
-          
-            s.stroke(200);
+          s.stroke(200);
           if(this.insertionArr[0] <= i) {
             s.fill(51);
           }

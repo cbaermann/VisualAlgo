@@ -11,6 +11,7 @@ import { InsertionComponent } from './insertion/insertion.component';
 import { BogoComponent } from './bogo/bogo.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { QuickComponent } from './quick/quick.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AboutComponent } from './about/about.component';
     InsertionComponent,
     BogoComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    QuickComponent
   ],
   imports: [
     BrowserModule,

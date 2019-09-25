@@ -8,6 +8,7 @@ import { InsertionComponent } from './insertion/insertion.component';
 import { SelectionComponent } from './selection/selection.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { QuickComponent } from './quick/quick.component';
 
 const routes: Routes = [
   { path : 'bubble', component : BubbleSortComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path : 'selection', component : SelectionComponent },
   { path: 'about', component: AboutComponent},
   { path: '', component: HomeComponent},
+  { path : 'quick', component : QuickComponent },
 ];
 
 @NgModule({
