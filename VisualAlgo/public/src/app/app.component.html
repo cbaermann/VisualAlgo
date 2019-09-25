@@ -7,19 +7,21 @@
   <title>Document</title>
 </head>
 <body>
-  <h1 style="display: inline-block">Welcome to VisualAlgo</h1>
-  <br>
-
-  <select (change)="changeAlgo($event)">
-    <option>Select Sort</option>
-    <option [routerLink]="['/bubble']">Bubble</option>
-    <option [routerLink]="['/pancake']">Pancake</option>
-    <option [routerLink]="['/bogo']">Bogo</option>
-    <option [routerLink]="['/insertion']">Insertion</option>
-    <option [routerLink]="['/selection']">Selection</option>
-    <option [routerLink]="['/cocktail']">Cocktail</option>
-    <option [routerLink]="['/quick']">Quick</option>
-  </select>
-  <router-outlet></router-outlet>
+  <div class="header">
+    
+    <h1>Welcome to VisualAlgo</h1>
+      <select (change)="changeAlgo($event)">
+        <option>Select Sort</option>
+        <option [routerLink]="['/bubble']">Bubble</option>
+        <option [routerLink]="['/pancake']">Pancake</option>
+        <option [routerLink]="['/bogo']">Bogo</option>
+        <option [routerLink]="['/insertion']">Insertion</option>
+        <option [routerLink]="['/selection']">Selection</option>
+        <option [routerLink]="['/cocktail']">Cocktail</option>
+        <option [routerLink]="['/quick']">Quick</option>
+      </select>
+    
+  </div>
+    <router-outlet></router-outlet>
 </body>
 </html>
