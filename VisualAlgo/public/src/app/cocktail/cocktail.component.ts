@@ -42,6 +42,7 @@ export class CocktailComponent implements OnInit {
           if(this.sorted == false) {
             this.arr = this.cocktailSort(this.arr);
             if(this.arr[0] > this.values.length / 2) {
+              this.arr[3] += 1;
               this.sorted = true;
             }
           }
