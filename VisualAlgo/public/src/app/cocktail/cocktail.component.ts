@@ -27,7 +27,7 @@ export class CocktailComponent implements OnInit {
       }
 
       s.setup = () => {
-        s.createCanvas(window.innerWidth - 16, window.innerHeight - 120);
+        s.createCanvas(window.innerWidth, window.innerHeight - 120);
         this.values = new Array(s.floor(s.width / this.w));
         for(let i = 0; i < this.values.length; i++) {
           this.values[i] = s.random(s.height - 50);

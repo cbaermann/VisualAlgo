@@ -9,9 +9,10 @@
 <body>
   <div class="header">
     
+    <button class="home"><a href="/">Home</a></button>
     <h1>Welcome to VisualAlgo</h1>
       <select (change)="changeAlgo($event)">
-        <option>Select Sort</option>
+        <option [routerLink]="['/']">Select Sort</option>
         <option [routerLink]="['/bubble']">Bubble</option>
         <option [routerLink]="['/pancake']">Pancake</option>
         <option [routerLink]="['/bogo']">Bogo</option>

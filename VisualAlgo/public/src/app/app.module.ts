@@ -9,6 +9,8 @@ import { SelectionComponent } from './selection/selection.component';
 import { CocktailComponent } from './cocktail/cocktail.component';
 import { InsertionComponent } from './insertion/insertion.component';
 import { BogoComponent } from './bogo/bogo.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 import { QuickComponent } from './quick/quick.component';
 
 @NgModule({
@@ -20,6 +22,8 @@ import { QuickComponent } from './quick/quick.component';
     CocktailComponent,
     InsertionComponent,
     BogoComponent,
+    HomeComponent,
+    AboutComponent,
     QuickComponent
   ],
   imports: [
