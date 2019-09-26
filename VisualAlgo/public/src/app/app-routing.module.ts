@@ -9,6 +9,7 @@ import { SelectionComponent } from './selection/selection.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { QuickComponent } from './quick/quick.component';
+import { MaxheapComponent } from './maxheap/maxheap.component';
 
 const routes: Routes = [
   { path : 'bubble', component : BubbleSortComponent },
@@ -18,8 +19,9 @@ const routes: Routes = [
   { path : 'insertion', component : InsertionComponent },
   { path : 'selection', component : SelectionComponent },
   { path: 'about', component: AboutComponent},
-  { path: '', component: HomeComponent},
   { path : 'quick', component : QuickComponent },
+  { path : 'maxheap', component : MaxheapComponent },
+  { path: '', component: HomeComponent},
 ];
 
 @NgModule({

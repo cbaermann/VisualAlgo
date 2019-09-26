@@ -12,6 +12,7 @@ import { BogoComponent } from './bogo/bogo.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { QuickComponent } from './quick/quick.component';
+import { MaxheapComponent } from './maxheap/maxheap.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { QuickComponent } from './quick/quick.component';
     BogoComponent,
     HomeComponent,
     AboutComponent,
-    QuickComponent
+    QuickComponent,
+    MaxheapComponent
   ],
   imports: [
     BrowserModule,

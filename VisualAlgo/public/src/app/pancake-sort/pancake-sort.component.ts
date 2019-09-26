@@ -20,7 +20,7 @@ export class PancakeSortComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.onShuffle();
+    // this.onShuffle();
     const sketch = (s) => {
       s.preload = () => {
 

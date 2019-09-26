@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import * as p5 from 'p5';
+import * as p5 from 'p5'
 
 @Component({
-  selector: 'app-selection',
-  templateUrl: './selection.component.html',
-  styleUrls: ['./selection.component.css']
+  selector: 'app-maxheap',
+  templateUrl: './maxheap.component.html',
+  styleUrls: ['./maxheap.component.css']
 })
-export class SelectionComponent implements OnInit {
-
+export class MaxheapComponent implements OnInit {
   values = [];
+  array_length = 0;
 
-  w = 100;
+  w = 10;
   sorted = false;
-  arr = [0, 0, 0, 0];
   shuffling = -1;
   shuffle = false;
   go = false;
@@ -27,27 +26,22 @@ export class SelectionComponent implements OnInit {
       }
 
       s.setup = () => {
-        s.createCanvas(window.innerWidth, window.innerHeight - 120);
+        s.createCanvas(window.innerWidth - 20, window.innerHeight - 120);
         this.values = new Array(s.floor(s.width / this.w));
         for(let i = 0; i < this.values.length; i++) {
           this.values[i] = s.random(s.height - 50);
         }
         this.shuffling = this.values.length - 1;
+        this.array_length = this.values.length;
       }
 
       s.draw = () => {
         s.background(200);
-        if(this.go==true){
-
-          if(this.sorted == false) {
-            this.arr = this.selectionSort(this.arr);
-            if(this.arr[0] > this.values.length - 1) {
-              this.sorted = true;
-            }
-          }
+        if(this.go == true) {
+          this.heapSort(this.values);
+          this.go = false;
         }
         if(this.shuffle == true) {
-          this.arr = [0, 0, 0, 0];
           this.shuffling = this.shuf(this.shuffling);
           if(this.shuffling == -1) {
             this.shuffling = this.values.length - 1;
@@ -56,57 +50,27 @@ export class SelectionComponent implements OnInit {
             this.go = false;
           }
         }
-
         for(let i = 0; i < this.values.length; i++) {
-          s.stroke(200);
-          if(this.arr[0] <= 0 + i) {
-            s.fill(51);
-          }
-          else {
-            s.fill(0, 128, 0);
-          }
-          if(this.arr[2] == i) {
-            s.fill(128, 0, 0);
-          }
+          s.stroke(255);
+          s.fill(51)
           s.rect(i * this.w, s.height - this.values[i], this.w, this.values[i]);
         }
       }
     }
-
     let canvas = new p5(sketch);
   }
 
-    ngOnDestroy(){
+
+  ngOnDestroy(){
     document.querySelector("canvas").remove()
   }
 
-  swap(arr, a, b) {
+  async swap(arr, a, b) {
+    await this.sleep(1)
     let temp = arr[a];
     arr[a] = arr[b];
     arr[b] = temp;
   }
-
-  selectionSort(arr) {
-    let i = arr[0];
-    let j = arr[1];
-    let temp = arr[2];
-    if(this.values[temp] > this.values[j]) {
-      temp = j;
-    }
-    if(i < this.values.length) {
-      j += 1;
-      if(j > this.values.length - 1) {
-        this.swap(this.values, i, temp);
-        i += 1;
-        j = i;
-        temp = i;
-      }
-    }
-    arr[0] = i;
-    arr[1] = j;
-    arr[2] = temp;
-    return arr;
-  };
 
   shuf(val) {
     let j = Math.floor(Math.random() * val + 1);
@@ -124,4 +88,42 @@ export class SelectionComponent implements OnInit {
   onClick(){
     this.go = true;
   }
+
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async heap_root(arr, i) {
+    var left = 2 * i + 1;
+    var right = 2 * i + 2;
+    var max = i;
+
+    if (left < this.array_length && arr[left] > arr[max]) {
+        max = left;
+    }
+
+    if (right < this.array_length && arr[right] > arr[max])     {
+        max = right;
+    }
+
+    if (max != i) {
+        await this.swap(arr, i, max);
+        await this.heap_root(arr, max);
+    }
+}
+
+  async heapSort(arr) {
+    
+    for (var i = Math.floor(this.array_length / 2); i >= 0; i -= 1)      {
+        await this.heap_root(arr, i);
+    }
+
+    for (i = arr.length - 1; i > 0; i--) {
+        await this.swap(arr, 0, i);
+        this.array_length--;
+    
+        await this.heap_root(arr, 0);
+    }
+}
+
 }

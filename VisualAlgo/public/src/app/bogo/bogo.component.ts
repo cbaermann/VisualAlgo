@@ -20,7 +20,7 @@ export class BogoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.onShuffle();
+    // this.onShuffle();
     const sketch = (s) => {
       s.preload = () => {
 

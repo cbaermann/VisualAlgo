@@ -20,7 +20,7 @@ export class QuickComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.onShuffle();
+    // this.onShuffle();
     const sketch = (s) => {
       s.preload = () => {
 
@@ -37,7 +37,7 @@ export class QuickComponent implements OnInit {
       }
 
       s.draw = () => {
-        s.background(255);
+        s.background(200);
         if(this.go == true) {
           this.quickSort(this.values, 0, this.values.length - 1);
           this.go = false;
@@ -74,7 +74,7 @@ export class QuickComponent implements OnInit {
   }
 
   async swap(arr, a, b) {
-    await this.sleep(25)
+    await this.sleep(1)
     let temp = arr[a];
     arr[a] = arr[b];
     arr[b] = temp;
